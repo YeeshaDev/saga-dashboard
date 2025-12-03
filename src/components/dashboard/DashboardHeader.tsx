@@ -34,13 +34,13 @@ const DashboardHeader = ({ user, onLogout }: DashboardHeaderProps) => {
           <Input
             type="search"
             placeholder="Search..."
-            className="pl-9 h-9 bg-muted/50 border-0 focus-visible:ring-1"
+            className="pl-9 h-9 bg-muted/30 border focus-visible:ring-1"
           />
         </div>
       </div>
  <span className="font-semibold lg:hidden text-foreground">SagaD</span>
      <div className="flex mr-10 lg:mr-10 items-center gap-2 md:gap-4 ml-auto">
-  <a href='https://github.com/YeeshaDev/saga-dashboard.git' target='_blank' rel='noreferrer'>
+  <a href='https://github.com/YeeshaDev/saga-dashboard' target='_blank' rel='noreferrer'>
  <Button variant="outline" size="sm" className="hidden md:flex">
           Source code
         </Button>

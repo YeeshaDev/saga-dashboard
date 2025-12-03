@@ -30,7 +30,7 @@ export const ChartSkeleton = ({ className }: { className?: string }) => (
   >
     <div className="h-5 w-40 skeleton-shimmer rounded mb-4" />
     <div className="h-4 w-24 skeleton-shimmer rounded mb-6" />
-    <div className="h-48 w-full skeleton-shimmer rounded" />
+    <div className="h-32 w-full skeleton-shimmer rounded" />
   </motion.div>
 );
 

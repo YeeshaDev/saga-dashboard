@@ -4,8 +4,7 @@ import {
   fetchDashboardSuccess,
   fetchDashboardFailure,
 } from '../slices/dashboardSlice';
-
-// This is a mock object data 
+ 
 function generateMockData() {
   const stats = [
     {

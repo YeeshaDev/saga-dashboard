@@ -16,14 +16,14 @@ const ActivityTable = ({ data }: ActivityTableProps) => {
       transition={{ delay: 0.4 }}
       className="bg-card rounded-lg border border-border card-shadow overflow-hidden"
     >
-      <div className="px-6 py-4 border-b border-border">
+      <div className="px-6 py-4 border-b border-gray-200">
         <h3 className="font-semibold text-foreground">Recent Activity</h3>
       </div>
       
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-border bg-muted/30">
+            <tr className="border-b border-border bg-muted/50">
               <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-6 py-3">
                 User
               </th>

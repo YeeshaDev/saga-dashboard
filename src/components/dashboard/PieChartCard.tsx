@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-import type { ChartData } from '@/store/slices/dashboardSlice';
 
 interface PieChartCardProps {
-  data: ChartData[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any[];
   title: string;
   showPercentages?: boolean;
 }

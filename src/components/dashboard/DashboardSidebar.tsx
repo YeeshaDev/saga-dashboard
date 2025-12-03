@@ -44,7 +44,6 @@ const DashboardSidebar = () => {
         )}
       </AnimatePresence>
 
-      {/* Sidebar */}
       <motion.aside
         initial={false}
         animate={{ width: collapsed ? 64 : 240 }}
@@ -116,7 +115,7 @@ const DashboardSidebar = () => {
         <div className="p-3 border-t border-border">
           <button
             className={cn(
-              'flex items-center gap-3 px-3 py-2.5 rounded-lg w-full transition-colors',
+              'flex items-center gap-3 px-3 py-3 rounded-lg w-full transition-colors',
               'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
             )}
           >

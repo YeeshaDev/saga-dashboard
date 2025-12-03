@@ -53,7 +53,7 @@
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(88.609% 0.00107 11.989);
+  --muted: oklch(94.927% 0.00516 324.643);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
@@ -222,9 +222,9 @@
 .skeleton-shimmer {
   background: linear-gradient(
     90deg,
-    hsl(var(--muted)) 0%,
-    hsl(var(--muted) / 0.5) 50%,
-    hsl(var(--muted)) 100%
+    #eeeeee 0%,
+    #e7e6e7 50%,
+    #f0eef0 100%
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s ease-in-out infinite;
