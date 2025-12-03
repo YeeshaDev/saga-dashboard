@@ -1,73 +1,198 @@
-# React + TypeScript + Vite
+# React Dashboard with Redux & Sagas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully responsive, modern dashboard application built with React, TypeScript, Redux Toolkit, and Redux-Saga. Features mock authentication, dynamic data visualization, skeleton loading states, and smooth animations.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Authentication
+- **Mock Login System**: Secure login flow with form validation
+- **Demo Credentials**: `admin@demo.com` / `password` (or any email with 6+ char password)
+- **Persistent Sessions**: User data stored in localStorage
+- **Protected Routes**: Dashboard requires authentication
 
-## React Compiler
+### Dashboard Components
+- **6 Statistical Cards**: New Tickets, Closed Today, New Replies, Followers, Daily Earnings, Products
+- **Activity Chart**: Area chart showing development activity trends
+- **Pie Charts**: Two pie charts displaying category distribution and device breakdown
+- **Activity Table**: Recent commit history with user avatars
+- **Collapsible Sidebar**: Responsive navigation with icons and labels
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### User Experience
+- **Skeleton Loading States**: Shimmer effects during data fetching
+- **Smooth Animations**: Framer Motion powered transitions
+- **Responsive Design**: Mobile-first approach, works on all screen sizes
+- **Dark/Light Ready**: CSS variables for easy theming
 
-## Expanding the ESLint configuration
+## 🏗️ Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### State Management
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/store/
+├── index.ts              # Store configuration with saga middleware
+├── hooks.ts              # Typed useAppDispatch & useAppSelector
+├── slices/
+│   ├── authSlice.ts      # Authentication state (user, isAuthenticated, loading, error)
+│   └── dashboardSlice.ts # Dashboard data (stats, charts, activity)
+└── sagas/
+    ├── index.ts          # Root saga combining all sagas
+    ├── authSaga.ts       # Login flow with mock API
+    └── dashboardSaga.ts  # Dashboard data fetching
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Component Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/components/dashboard/
+├── DashboardHeader.tsx   # Top bar with search, notifications, user menu
+├── DashboardSidebar.tsx  # Collapsible navigation sidebar
+├── StatCard.tsx          # Individual stat display with trends
+├── ActivityChart.tsx     # Recharts area chart component
+├── PieChartCard.tsx      # Recharts pie chart component
+├── ActivityTable.tsx     # Recent activity list
+└── Skeletons.tsx         # Loading skeleton components
+```
+
+### Pages
+
+```
+src/pages/
+├── Login.tsx             # Authentication page with form
+├── Dashboard.tsx         # Main dashboard layout
+├── Index.tsx             # Redirect to login
+└── NotFound.tsx          # 404 error page
+```
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| **React 18** | UI Framework |
+| **TypeScript** | Type Safety |
+| **Redux Toolkit** | State Management |
+| **Redux-Saga** | Side Effects & Async Logic |
+| **React Router v6** | Client-side Routing |
+| **Recharts** | Data Visualization |
+| **Framer Motion** | Animations |
+| **Tailwind CSS** | Styling |
+| **Shadcn/ui** | UI Components |
+| **Vite** | Build Tool |
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or bun
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <https://github.com/YeeshaDev/saga-dashboard.git >
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`
+
+## 📱 Responsive Breakpoints
+
+| Breakpoint | Width | Layout |
+|------------|-------|--------|
+| Mobile | < 640px | Single column, collapsed sidebar |
+| Tablet | 640px - 1024px | Two columns, icon-only sidebar |
+| Desktop | > 1024px | Full layout with expanded sidebar |
+
+## 🎨 Design System
+
+### CSS Variables (index.css)
+
+```css
+:root {
+  --background: 210 20% 98%;
+  --foreground: 222 47% 11%;
+  --primary: 221 83% 53%;
+  --secondary: 210 40% 96%;
+  --accent: 210 40% 96%;
+  --muted: 210 40% 96%;
+  /* ... more variables */
+}
+```
+
+### Custom Animations
+
+- `fade-in` - Smooth opacity transition
+- `slide-up` - Upward motion entrance
+- `pulse-soft` - Gentle pulsing effect
+- `shimmer` - Skeleton loading effect
+
+## 📊 Data Flow
+
+```
+User Action → Redux Action → Saga Middleware → Mock API → Redux State → React Components
+```
+
+### Example: Login Flow
+
+1. User submits login form
+2. `loginRequest` action dispatched
+3. `authSaga` catches action, calls mock API
+4. On success: `loginSuccess` updates state, saves to localStorage
+5. Component re-renders, navigates to dashboard
+
+### Example: Dashboard Data
+
+1. Dashboard mounts, dispatches `fetchDashboardRequest`
+2. `dashboardSaga` generates mock data with delay
+3. `fetchDashboardSuccess` populates state
+4. Components render with real data (skeletons disappear)
+
+## 🔐 Authentication
+
+### Mock Credentials
+- **Admin**: `admin@demo.com` / `password`
+- **Any User**: Any valid email + password (min 6 characters)
+
+### Session Persistence
+User data is stored in `localStorage` under the key `user`. On app load, the auth slice checks for existing session.
+
+## 📁 Project Structure
+
+```
+├── public/
+│   ├── favicon.ico
+│   └── robots.txt
+├── src/
+│   ├── components/
+│   │   ├── dashboard/      # Dashboard-specific components
+│   │   └── ui/             # Shadcn UI components
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   ├── pages/              # Route pages
+│   ├── store/              # Redux store, slices, sagas
+│   ├── App.tsx             # Root component with routes
+│   ├── index.css           # Global styles & CSS variables
+│   └── main.tsx            # Entry point
+├── tailwind.config.ts      # Tailwind configuration
+├── vite.config.ts          # Vite configuration
+└── package.json            # Dependencies
+```
+
+## 🧪 Key Implementation Details
+
+### Redux-Saga Pattern
+```typescript
+function* handleLogin(action: PayloadAction<{ email: string; password: string }>) {
+  try {
+    const user = yield mockLogin(action.payload.email, action.payload.password);
+    yield put(loginSuccess(user));
+  } catch (error) {
+    yield put(loginFailure(error.message));
+  }
+}
+```
+
