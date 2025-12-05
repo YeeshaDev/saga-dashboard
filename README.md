@@ -67,7 +67,7 @@ src/pages/
 
 | Technology | Purpose |
 |------------|---------|
-| **React 18** | UI Framework |
+| **React 19** | UI Framework |
 | **TypeScript** | Type Safety |
 | **Redux Toolkit** | State Management |
 | **Redux-Saga** | Side Effects & Async Logic |
