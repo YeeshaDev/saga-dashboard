@@ -31,7 +31,7 @@ const DashboardSidebar = () => {
 
   return (
     <>
-      {/* Mobile overlay */}
+  
       <AnimatePresence>
         {!collapsed && (
           <motion.div
@@ -80,7 +80,7 @@ const DashboardSidebar = () => {
           </button>
         </div>
 
-        {/* Navigation */}
+        
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
           {menuItems.map((item) => (
             <NavLink
