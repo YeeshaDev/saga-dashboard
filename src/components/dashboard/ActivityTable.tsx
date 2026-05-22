@@ -38,6 +38,7 @@ const ActivityTable = ({ data }: ActivityTableProps) => {
               </th>
             </tr>
           </thead>
+          
           <tbody className="divide-y divide-border">
             {data.map((item, index) => (
               <motion.tr
@@ -75,6 +76,7 @@ const ActivityTable = ({ data }: ActivityTableProps) => {
           </tbody>
         </table>
       </div>
+      
     </motion.div>
   );
 };
